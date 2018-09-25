@@ -791,6 +791,7 @@ if test -z "$no_ptmx_check" ; then
 	fi
 fi
 
+AC_DEFINE(USE_DEV_PTMX,1,Use /dev/ptmx)
 if test -z "$no_ptc_check" ; then
 	if test x"$cross_compiling" = x"no" ; then
 		if test -e /dev/ptc ; then
