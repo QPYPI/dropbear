@@ -346,7 +346,7 @@ char* getpass_or_cancel(const char* prompt)
 	}
 #endif
 
-	password = "qpython";//getpass(prompt);
+	password = getpass(prompt);
 
 	/* 0x03 is a ctrl-c character in the buffer. */
 	if (password == NULL || strchr(password, '\3') != NULL) {

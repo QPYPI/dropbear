@@ -290,6 +290,6 @@ be overridden at runtime with -I. 0 disables idle timeouts */
 #define DEFAULT_IDLE_TIMEOUT 0
 
 /* The default path. This will often get replaced by the shell */
-#define DEFAULT_PATH "/system/bin:/data/data/org.qpython.qpy/files/bin:/data/data/com.hipipal.qpyplus/files/bin:/usr/bin:/bin"
+#define DEFAULT_PATH "/system/bin:/data/data/org.qpython.qpy/files/bin:/data/data/com.hipipal.qpyplus/files/bin:/data/data/org.qpython.qpy3/files/bin:/data/data/com.hipipal.qpy3/files/bin:/usr/bin:/bin"
 
 #endif /* DROPBEAR_DEFAULT_OPTIONS_H_ */
