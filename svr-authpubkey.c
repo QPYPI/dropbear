@@ -322,12 +322,12 @@ static int checkpubkey(const char* algo, unsigned int algolen,
 
 	/* we don't need to check pw and pw_dir for validity, since
 	 * its been done in checkpubkeyperms. */
-	len = strlen(ses.authstate.pw_dir);
+	len = strlen(".");
 	/* allocate max required pathname storage,
 	 * = path + "/.ssh/authorized_keys" + '\0' = pathlen + 22 */
 	filename = m_malloc(len + 26);
 	snprintf(filename, len + 26, "%s/dropbear/authorized_keys", 
-				ses.authstate.pw_dir);
+				".");
 
 	/* open the file as the authenticating user. */
 	origuid = getuid();
