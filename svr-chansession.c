@@ -962,6 +962,8 @@ static void execchild(const void *user_data) {
 	addnewvar("HOME", ses.authstate.pw_dir);
 	addnewvar("SHELL", get_user_shell());
 	addnewvar("PATH", DEFAULT_PATH);
+	addnewvar("ANDROID_ROOT", DEFAULT_ROOT);
+	addnewvar("ANDROID_DATA", DEFAULT_DATA);
 	if (chansess->term != NULL) {
 		addnewvar("TERM", chansess->term);
 	}

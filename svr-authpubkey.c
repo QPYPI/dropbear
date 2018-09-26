@@ -410,9 +410,9 @@ static int checkpubkeyperms() {
 	strncat(filename, ".", 1);
 
 	/* check ~ */
-	if (checkfileperm(filename) != DROPBEAR_SUCCESS) {
+	/*if (checkfileperm(filename) != DROPBEAR_SUCCESS) {
 		goto out;
-	}
+	}*/
 
 	/* check ~/.ssh */
 	strncat(filename, "/dropbear", 9); /* strlen("/dropbear") == 9 */
