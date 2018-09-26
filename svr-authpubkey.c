@@ -400,14 +400,14 @@ static int checkpubkeyperms() {
 		goto out;
 	}
 
-	if ((len = strlen(ses.authstate.pw_dir)) == 0) {
+	if ((len = strlen(".")) == 0) {
 		goto out;
 	}
 
 	/* allocate max required pathname storage,
 	 * = path + "/.ssh/authorized_keys" + '\0' = pathlen + 22 */
 	filename = m_malloc(len + 26);
-	strncpy(filename, ses.authstate.pw_dir, len+1);
+	strncat(filename, ".", 1);
 
 	/* check ~ */
 	if (checkfileperm(filename) != DROPBEAR_SUCCESS) {
