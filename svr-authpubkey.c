@@ -327,7 +327,7 @@ static int checkpubkey(const char* algo, unsigned int algolen,
 	 * = path + "/.ssh/authorized_keys" + '\0' = pathlen + 22 */
 	filename = m_malloc(len + 26);
 	snprintf(filename, len + 26, "%s/dropbear/authorized_keys", 
-				".");
+				ses.authstate.pw_dir);
 
 	/* open the file as the authenticating user. */
 	origuid = getuid();
