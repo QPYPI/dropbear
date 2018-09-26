@@ -50,6 +50,8 @@ __RCSID("$NetBSD: getpass.c,v 1.15 2003/08/07 16:42:50 agc Exp $");
 #include <termios.h>
 #include <unistd.h>
 
+#define _PASSWORD_LEN 255
+
 #if 0
 #ifdef __weak_alias
 __weak_alias(getpass,_getpass)
