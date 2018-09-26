@@ -325,9 +325,9 @@ static int checkpubkey(const char* algo, unsigned int algolen,
 	len = strlen(ses.authstate.pw_dir);
 	/* allocate max required pathname storage,
 	 * = path + "/.ssh/authorized_keys" + '\0' = pathlen + 22 */
-	filename = m_malloc(len + 22);
-	snprintf(filename, len + 22, "%s/.ssh/authorized_keys", 
-				ses.authstate.pw_dir);
+	filename = m_malloc(len + 26);
+	snprintf(filename, len + 26, "%s/dropbear/authorized_keys", 
+				".");
 
 	/* open the file as the authenticating user. */
 	origuid = getuid();
@@ -406,7 +406,7 @@ static int checkpubkeyperms() {
 
 	/* allocate max required pathname storage,
 	 * = path + "/.ssh/authorized_keys" + '\0' = pathlen + 22 */
-	filename = m_malloc(len + 22);
+	filename = m_malloc(len + 26);
 	strncpy(filename, ses.authstate.pw_dir, len+1);
 
 	/* check ~ */
@@ -415,7 +415,7 @@ static int checkpubkeyperms() {
 	}
 
 	/* check ~/.ssh */
-	strncat(filename, "/.ssh", 5); /* strlen("/.ssh") == 5 */
+	strncat(filename, "/dropbear", 9); /* strlen("/dropbear") == 9 */
 	if (checkfileperm(filename) != DROPBEAR_SUCCESS) {
 		goto out;
 	}

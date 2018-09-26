@@ -241,20 +241,20 @@ static FILE* open_known_hosts_file(int * readonly)
 	if (homedir) {
 		unsigned int len;
 		len = strlen(homedir);
-		filename = m_malloc(len + 18); /* "/.ssh/known_hosts" and null-terminator*/
+		filename = m_malloc(len + 22); /* "/dropbear/known_hosts" and null-terminator*/
 
-		snprintf(filename, len+18, "%s/.ssh", homedir);
+		snprintf(filename, len+22, "%s/dropbear", homedir);
 		/* Check that ~/.ssh exists - easiest way is just to mkdir */
 		if (mkdir(filename, S_IRWXU) != 0) {
 			if (errno != EEXIST) {
-				dropbear_log(LOG_INFO, "Warning: failed creating %s/.ssh: %s",
+				dropbear_log(LOG_INFO, "Warning: failed creating %s/dropbear: %s",
 						homedir, strerror(errno));
 				TRACE(("mkdir didn't work: %s", strerror(errno)))
 				goto out;
 			}
 		}
 
-		snprintf(filename, len+18, "%s/.ssh/known_hosts", homedir);
+		snprintf(filename, len+22, "%s/dropbear/known_hosts", homedir);
 		hostsfile = fopen(filename, "a+");
 		
 		if (hostsfile != NULL) {
@@ -272,7 +272,7 @@ static FILE* open_known_hosts_file(int * readonly)
 
 	if (hostsfile == NULL) {
 		TRACE(("hostsfile didn't open: %s", strerror(errno)))
-		dropbear_log(LOG_WARNING, "Failed to open %s/.ssh/known_hosts",
+		dropbear_log(LOG_WARNING, "Failed to open %s/dropbear/known_hosts",
 				homedir);
 		goto out;
 	}	
@@ -364,7 +364,7 @@ static void checkhostkey(const unsigned char* keyblob, unsigned int keybloblen) 
 		dropbear_exit("\n\n%s host key mismatch for %s !\n"
 					"Fingerprint is %s\n"
 					"Expected %s\n"
-					"If you know that the host key is correct you can\nremove the bad entry from ~/.ssh/known_hosts", 
+					"If you know that the host key is correct you can\nremove the bad entry from ~/dropbear/known_hosts", 
 					algoname,
 					cli_opts.remotehost,
 					sign_key_fingerprint(keyblob, keybloblen),

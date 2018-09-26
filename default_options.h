@@ -202,7 +202,7 @@ group1 in Dropbear server too */
 
 /* A default argument for dbclient -i <privatekey>. 
 Homedir is prepended unless path begins with / */
-#define DROPBEAR_DEFAULT_CLI_AUTHKEY ".ssh/id_dropbear"
+#define DROPBEAR_DEFAULT_CLI_AUTHKEY "dropbear/id_dropbear"
 
 /* Allow specifying the password for dbclient via the DROPBEAR_PASSWORD
  * environment variable. */

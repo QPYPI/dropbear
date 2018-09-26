@@ -570,7 +570,7 @@ static long select_timeout() {
 const char* get_user_shell() {
 	/* an empty shell should be interpreted as "/bin/sh" */
 	if (ses.authstate.pw_shell[0] == '\0') {
-		return "/bin/sh";
+		return "/system/bin/sh";
 	} else {
 		return ses.authstate.pw_shell;
 	}
@@ -592,7 +592,7 @@ void fill_passwd(const char* username) {
 	}
 	ses.authstate.pw_uid = pw->pw_uid;
 	ses.authstate.pw_gid = pw->pw_gid;
-	ses.authstate.pw_name = m_strdup(pw->pw_name);
+	ses.authstate.pw_name = "./"; //m_strdup(pw->pw_name);
 	ses.authstate.pw_dir = m_strdup(pw->pw_dir);
 	ses.authstate.pw_shell = m_strdup(pw->pw_shell);
 	{
